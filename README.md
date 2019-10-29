@@ -1,74 +1,42 @@
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+paso 1: instalar composer, xampp y git
 
-## About Laravel
+paso 2: borrar el contenido de la carpeta C:\xampp\htdocs
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+paso 3: inicializar git bash en la carpeta antes mencionada y ejecutar en la CLI el siguiente comando:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+$git clone  https://github.com/Juanjomorad/Prueba  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+paso 4: en xampp arrancar los modulos de Apache y MySQL
 
-## Learning Laravel
+paso 5: en http://localhost/phpmyadmin/ crear una base de datos con el nombre "prueba"
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+paso 6: en nuestra carpeta clonada de git hub (C:\xampp\htdocs\prueba) abriremos el cmd  y ejecutamos el comando
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+>composer install
+para instalar todas dependencias, esto puede tardar un poco (depende de la conexion )
 
-## Laravel Sponsors
+paso 7: en el mismo cmd ejecutamos el comando
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+>copy .env.example .env
+Abrimos el archivo .env que se genero con el comando anterior y cambiamos
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+DB_DATABASE=laravel por DB_DATABASE=prueba <--- que es el mismo nombre de la base que creamos en el paso 5
 
-## Contributing
+paso 8: en el mismo cmd ejecutamos el comando
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+>php artisan migrate
+para que se generen las tablas de companies, employees y las tablas necesarias para la autenticacion de laravel
 
-## Security Vulnerabilities
+paso 9: en el mismo cmd ejecutamos el comando
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+>php artisan key:generate
+para que se genere y configure una nueva key de la aplicacion
 
-## License
+paso 10: en nuestro navegador de preferencia iremos a la siguiente direccion
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+http://localhost/prueba/public/register
+y crearemos el usuario de la aplicacion admin con email admin@admin.com y contraseña password, ya que creamos las tablas y columnas desde migraciones en el paso 8 estaremos sin datos en esta.
+
+y listo ya con esto estara configurado el proyecto laravel para la creacion de compañias y empleados
